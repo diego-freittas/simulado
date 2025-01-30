@@ -11,6 +11,8 @@ import br.com.razila.simulado.repository.RespostaRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +33,18 @@ public class QuestaoService {
      */
     public List<QuestaoDTO> listarTodas() {
         List<Questao> questoes = questaoRepository.findAll();
+        return questoes.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Retorna uma lista de QuestaoDTO convertida a partir das entidades Questao.
+     *
+     * @return List<QuestaoDTO>
+     */
+    public List<QuestaoDTO> listarPorMaterias(Long codigoMateria) {
+        List<Questao> questoes = questaoRepository.findQuestaosByMateria(codigoMateria);
         return questoes.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

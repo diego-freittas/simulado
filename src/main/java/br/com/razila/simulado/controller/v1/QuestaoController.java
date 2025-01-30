@@ -29,6 +29,12 @@ public class QuestaoController {
         return ResponseEntity.ok(questoesDTO);
     }
 
+    @GetMapping("/materia/{codigoMateria}")
+    public ResponseEntity<List<QuestaoDTO>> listarTodas(@PathVariable Long codigoMateria) {
+        List<QuestaoDTO> questoesDTO = questaoService.listarPorMaterias(codigoMateria);
+        return ResponseEntity.ok(questoesDTO);
+    }
+
     /**
      * Retorna um QuestaoDTO por ID.
      *

@@ -14,6 +14,8 @@ import java.util.List;
 @Builder
 public class QuestaoDTO {
 
+    private Long id;
+
     private String materia; // Nome da matéria
 
     @NotBlank(message = "A pergunta é obrigatória")
