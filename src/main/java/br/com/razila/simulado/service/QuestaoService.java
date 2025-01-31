@@ -11,8 +11,6 @@ import br.com.razila.simulado.repository.RespostaRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,6 +44,7 @@ public class QuestaoService {
     public List<QuestaoDTO> listarPorMaterias(Long codigoMateria) {
         List<Questao> questoes = questaoRepository.findQuestaosByMateria(codigoMateria);
         return questoes.stream()
+                .filter(questao -> !questao.getRespostas().isEmpty())
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }

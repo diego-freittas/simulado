@@ -30,7 +30,7 @@ public class QuestaoController {
     }
 
     @GetMapping("/materia/{codigoMateria}")
-    public ResponseEntity<List<QuestaoDTO>> listarTodas(@PathVariable Long codigoMateria) {
+    public ResponseEntity<List<QuestaoDTO>> listarPorMaterias(@PathVariable Long codigoMateria) {
         List<QuestaoDTO> questoesDTO = questaoService.listarPorMaterias(codigoMateria);
         return ResponseEntity.ok(questoesDTO);
     }
