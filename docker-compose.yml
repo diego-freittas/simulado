@@ -1,0 +1,18 @@
+services:
+  app:
+    image: tpddiego/simulado:latest
+    container_name: servidor-spring
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-simulado/simulado
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres11235813
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - simulado-rede
+
+networks:
+  simulado-rede:
+    external: true
+
