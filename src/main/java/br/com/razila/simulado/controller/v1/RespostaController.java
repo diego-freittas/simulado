@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/respostas")
+@RequestMapping("/simulado/api/respostas")
 public class RespostaController {
 
     private @Autowired RespostaService respostaService;
